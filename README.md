@@ -16,7 +16,7 @@ Self-hosted serverless API for dynamically generating GitHub stats cards
 
 ### Prerequisites
 
-- Node.js 18+ (or use devcontainer)
+- Node.js 24 (or use devcontainer)
 - Vercel CLI (or use devcontainer)
 - GitHub Personal Access Token with `repo` and `read:user` scopes
 
@@ -44,7 +44,7 @@ Self-hosted serverless API for dynamically generating GitHub stats cards
 
 ### Endpoint
 
-```
+```plaintext
 GET /api?username=<github_username>&theme=<theme>&hide=<stats>&show=<stats>
 ```
 
@@ -61,7 +61,7 @@ GET /api?username=<github_username>&theme=<theme>&hide=<stats>&show=<stats>
 
 ### Examples
 
-```
+```plaintext
 /api?username=octocat
 /api?username=octocat&theme=dark
 /api?username=octocat&theme=orange&hide=issues
@@ -90,7 +90,7 @@ See the `tf-vercel` repository for infrastructure as code setup.
 
 ## Project Structure
 
-```
+```plaintext
 github-readme-stats-app/
 ├── .devcontainer/          # Devcontainer configuration
 ├── api/                    # Vercel serverless functions
