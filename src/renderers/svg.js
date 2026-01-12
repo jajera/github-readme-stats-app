@@ -25,7 +25,7 @@ function generateSVG(stats, themeName, username, isOrg = false) {
 
     // Use bodyTextColor if available, otherwise fall back to textColor
     const bodyColor = theme.bodyTextColor || theme.textColor;
-    
+
     return `
       <g transform="translate(${x}, ${y})">
         <text x="0" y="0" class="stat-label" fill="${bodyColor}" font-family="Segoe UI, Verdana, sans-serif" font-size="14">
@@ -41,7 +41,7 @@ function generateSVG(stats, themeName, username, isOrg = false) {
   // Check if username contains "(All Orgs)" to determine title
   const isAggregated = username.includes('(All Orgs)');
   const cleanUsername = username.replace(' (All Orgs)', '');
-  
+
   let title;
   if (isOrg) {
     title = `${cleanUsername}'s Organization Stats`;
@@ -100,4 +100,3 @@ module.exports = {
   generateSVG,
   generateErrorSVG,
 };
-

@@ -37,12 +37,12 @@ module.exports = async (req, res) => {
       const userData = await fetchAllUserData(username, countPrivate, includeAllOrgs);
       const stats = calculateStats(userData);
       const filteredStats = filterStats(stats, hideArray, showArray);
-      
+
       // Update title if aggregated
-      const displayName = userData.aggregated 
+      const displayName = userData.aggregated
         ? `${username} (All Orgs)`
         : username;
-      
+
       const svg = generateSVG(filteredStats, theme, displayName, userData.isOrg);
 
       const cacheSeconds = process.env.CACHE_SECONDS
@@ -76,4 +76,3 @@ module.exports = async (req, res) => {
     return res.status(500).send(errorSVG);
   }
 };
-
