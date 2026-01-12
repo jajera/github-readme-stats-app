@@ -9,7 +9,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "@octokit/rest": "^22.0.1",
+    "@octokit/rest": "20.0.0",
     "@vercel/node": "^5.5.16",
     "dotenv": "^17.2.3"
   },
