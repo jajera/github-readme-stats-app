@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify project structure
+        run: |
+          test -f api/index.js || (echo "Missing api/index.js" && exit 1)
+          test -f package.json || (echo "Missing package.json" && exit 1)
+          test -f vercel.json || (echo "Missing vercel.json" && exit 1)
+          echo "✅ Project structure verified"
+
+      - name: Security audit
+        run: npm audit --audit-level=moderate || true
+
+      - name: Check dependencies
+        run: npm outdated || true

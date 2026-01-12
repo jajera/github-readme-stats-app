@@ -1,0 +1,23 @@
+{
+  "name": "github-readme-stats-app",
+  "version": "1.0.0",
+  "description": "Self-hosted serverless API for dynamically generating GitHub stats cards",
+  "main": "api/index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "dev:vercel": "vercel dev",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.0",
+    "@vercel/node": "^3.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^35.0.0"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
+
