@@ -1,7 +1,5 @@
 # github-readme-stats-app
 
-[![Build](https://github.com/jajera/github-readme-stats-app/actions/workflows/build-and-tag.yml/badge.svg)](https://github.com/jajera/github-readme-stats-app/actions/workflows/build-and-tag.yml)
-
 Self-hosted serverless API for dynamically generating GitHub stats cards
 
 ## Features
@@ -16,7 +14,7 @@ Self-hosted serverless API for dynamically generating GitHub stats cards
 
 ### Prerequisites
 
-- Node.js 24 (or use devcontainer)
+- Node.js 18+ (or use devcontainer)
 - Vercel CLI (or use devcontainer)
 - GitHub Personal Access Token with `repo` and `read:user` scopes
 
