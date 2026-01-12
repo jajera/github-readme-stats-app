@@ -1,0 +1,54 @@
+name: Test API
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "GitHub username to test with"
+        required: true
+        default: "octocat"
+      theme:
+        description: "Theme to test"
+        required: false
+        default: "default"
+        type: choice
+        options:
+          - default
+          - dark
+          - white
+          - orange
+          - blue
+
+jobs:
+  test-api:
+    name: Test API Endpoint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify API structure
+        run: |
+          test -f api/index.js || (echo "Missing api/index.js" && exit 1)
+          test -d src/fetchers || (echo "Missing src/fetchers" && exit 1)
+          test -d src/calculators || (echo "Missing src/calculators" && exit 1)
+          test -d src/renderers || (echo "Missing src/renderers" && exit 1)
+          test -d src/themes || (echo "Missing src/themes" && exit 1)
+          echo "✅ API structure verified"
+
+      - name: Test API endpoint (dry run)
+        env:
+          PAT_1: ${{ secrets.PAT_1 || 'dummy-token-for-structure-test' }}
+        run: |
+          echo "Testing API with username: ${{ inputs.username }}"
+          echo "Theme: ${{ inputs.theme }}"
+          echo "✅ API test completed (structure validation only)"
+          echo "Note: Full API testing requires PAT_1 secret and running server"
